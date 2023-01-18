@@ -1,15 +1,26 @@
 package application;
 
 import server.ServerMain;
+import services.ClientLogin;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import entities.Client;
+import entities.ClientCredentials;
 public class Program {
 
-	public static void main(String[] args) {
-		
-		ServerMain.getConnection();
-		ServerMain.closeConnection();
-		
-		
+	public static void main(String[] args) throws SQLException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Insira Login (ID)");
+		String id = sc.nextLine();
+		System.out.println("Insira Login (PASSWORD)");
+		String password = sc.nextLine();
+		ClientLogin cl = new ClientLogin(id,password);
 		
 		
 		

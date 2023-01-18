@@ -1,27 +1,51 @@
 package entities;
 
+import java.util.Objects;
+
 public class ClientCredentials {
 	
-	private int id;
-	private int password;
+	private String id;
+	private String password;
 	
-	
-	public ClientCredentials(int id, int password) {
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public ClientCredentials(String id, String password) {
 		super();
 		this.id = id;
 		this.password = password;
 	}
-	public int getId() {
-		return id;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, password);
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getPassword() {
-		return password;
-	}
-	public void setPassword(int password) {
-		this.password = password;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClientCredentials other = (ClientCredentials) obj;
+		return Objects.equals(id, other.id) && Objects.equals(password, other.password);
 	}
 
+	public String toString() {
+		return "ClientCredentials [id=" + id + ", password=" + password + "]";
+	}
+	
+	
+	
 }
+	
+	
