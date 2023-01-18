@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import services.clientActions;
 import entities.Client;
@@ -20,9 +21,52 @@ import entities.ClientCredentials;
 public class Program {
 
 	public static void main(String[] args) throws SQLException, ParseException {
-		Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	int id = 32;
+	boolean sucess = false;
+	System.out.println("Bem vindo ao Sistema de Banco BPSJ!");
+	System.out.println("Voce deseja criar uma conta, ou se logar com uma nova?");
+	System.out.println("  1 - (Criar conta)         2 - (Entrar Com conta)");
+	int opcao = 0;
+	
+	while (sucess == false) {
+	try {
+	System.out.println("Digite um numero!");
+	opcao = sc.nextInt(); 
+	if (opcao > 2 || opcao < 1) {
+		sucess = false;
+		System.out.println( "apenas 1 ou 2 !");
+	} else {
+	sucess = true;}
+	
+	} catch (InputMismatchException e) {
+		    sc.next(); 
+		    sucess = false;
+	}}
+	sc.nextLine(); 
+	if (opcao == 1) {
+
+		System.out.print("Entre com o nome do cliente: ");
+		String name = sc.nextLine();
+		System.out.print("Entre com o email do cliente: ");
+		String email = sc.nextLine();
+		System.out.print("Entre com a data de nascimento do cliente (dd//MM/yyyy): ");
+		Date date = sdf.parse(sc.nextLine());
+		System.out.print("Entre com o ID (isso será usado no login: ");
+		String id = sc.nextLine();
+		System.out.print("Entre com a senha(isso será usado no login: ");
+		String senha = sc.nextLine();
+	
+		ClientLogin cl = new ClientLogin(id,senha,opcao); // opcao is the mode selected to clientLogin
+		
+		Client client = new Client(id,name,email,date);
+		System.out.println(client);
+		
+		
+
+	}
+	
+	/*int id = 32;
 	Date date = sdf.parse("12/05/2018");
 	double money =320;
 	Client client = new Client(id,"joao","Joao@hotmail",date,money);
@@ -31,7 +75,7 @@ public class Program {
 	client.setCurrency(ca.addMoney(money));
 	client.setCurrency(ca.removeMoney(money +920));
 	System.out.println("Depois de adicionar dinheiro");
-	System.out.println(client);
+	System.out.println(client);*/
 	
 	
 	

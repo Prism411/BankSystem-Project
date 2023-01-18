@@ -5,26 +5,26 @@ import java.util.Date;
 
 public class Client {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	private int id;
+	private String id;
 	private String name;
 	private String Email;
 	private Date birthdate;
-	private double currency;
+	private double currency = 0;
 	
 	public Client() {
 	}
 	
-	public Client(int id, String name, String email, Date birthdate, double currency) {
+	public Client(String id, String name, String email, Date birthdate) {
 		this.id = id;
 		this.name = name;
 		Email = email;
 		this.birthdate = birthdate;
-		this.currency = currency;
+
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
