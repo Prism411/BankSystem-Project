@@ -4,9 +4,22 @@ import entities.Client;
 
 public class clientActions {
 	
-	private Client client;
+	protected Client client;
 	
-	public void addMoney() {
+	public clientActions(Client client) {
+		this.client = client;
+	}
+	public double addMoney(double money) {
+		
+		double moneyStored = client.getCurrency();
+		return moneyStored += money;
+		
+	}
+	
+	public double removeMoney(double money) {
+		
+		double moneyStored = client.getCurrency();
+		return moneyStored -= money;
 		
 	}
 

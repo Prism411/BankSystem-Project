@@ -1,9 +1,10 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Client {
-	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private int id;
 	private String name;
 	private String Email;
@@ -50,5 +51,12 @@ public class Client {
 	public void setCurrency(double currency) {
 		this.currency = currency;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", Email=" + Email + ", birthdate=" + sdf.format(birthdate) + ", currency="
+				+ currency + "]";
+	}
+	
 	
 }
