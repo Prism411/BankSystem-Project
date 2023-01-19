@@ -44,28 +44,40 @@ public class Program {
 		    sucess = false;
 	}}
 	sc.nextLine(); 
-	if (opcao == 1) {
-
-		System.out.print("Entre com o nome do cliente: ");
-		String name = sc.nextLine();
-		System.out.print("Entre com o email do cliente: ");
-		String email = sc.nextLine();
-		System.out.print("Entre com a data de nascimento do cliente (dd//MM/yyyy): ");
-		Date date = sdf.parse(sc.nextLine());
-		System.out.print("Entre com o ID (isso será usado no login: ");
-		String id = sc.nextLine();
-		System.out.print("Entre com a senha(isso será usado no login: ");
-		String senha = sc.nextLine();
 	
-		ClientLogin cl = new ClientLogin(id,senha,opcao); // opcao is the mode selected to clientLogin
+	
+	switch (opcao) {
+	case 1:
+		System.out.print("Entre com o nome do cliente: ");
+			String name = sc.nextLine();
+		System.out.print("Entre com o email do cliente: ");
+			String email = sc.nextLine();
+		System.out.print("Entre com a data de nascimento do cliente (dd//MM/yyyy): ");
+			Date date = sdf.parse(sc.nextLine());
+		System.out.print("Entre com o ID (isso será usado no login: ");
+			String id = sc.nextLine();
+		System.out.print("Entre com a senha(isso será usado no login: ");
+			String senha = sc.nextLine();
+	
+		ClientLogin cl_1 = new ClientLogin(id,senha,opcao); // opcao is the mode selected to clientLogin
 		
 		Client client = new Client(id,name,email,date);
+		cl_1.ClientCreate(client);
 		System.out.println(client);
-		
-		
-
+		break;
+		case 2:
+			System.out.println("Insira o ID:");
+				String id_2 = sc.nextLine();
+			System.out.println("Insira o ID:");
+				String senha_2 = sc.nextLine();
+			ClientLogin cl_2 = new ClientLogin(id_2,senha_2,opcao);
+			break;
 	}
 	
+	
+	}
+} 
+
 	/*int id = 32;
 	Date date = sdf.parse("12/05/2018");
 	double money =320;
@@ -112,6 +124,5 @@ public class Program {
 	    // login failed                          
 */
 
-	}
+	
 
-}

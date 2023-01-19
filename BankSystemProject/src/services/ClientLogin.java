@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+
+import entities.Client;
 import server.ServerMain;
 
 public class ClientLogin {
@@ -26,20 +29,50 @@ public class ClientLogin {
 	    System.out.println("Existe!");
 	} else {
 		
-		if (Mode == 1) {
-		System.out.println("Não Existe!");}
+		switch (Mode) {
+		
+		case 1:
+		System.out.println("Não Existe!");
 		String registerSQL = "INSERT INTO users (id, senha) VALUES (?, ?)";
 		PreparedStatement ps = conn.prepareStatement(registerSQL);
 		ps.setString(1, ID);
 		ps.setString(2, Password);
 		ps.executeUpdate();
-		System.out.println("Login criado.. provavelmente");}
+		System.out.println("Login criado.. provavelmente"); break;
 		
-		if (Mode == 2) {
-			System.out.println("Não existe!");
-		}
-	ServerMain.closeConnection();
+		case 2:
+			System.out.println("Não existe!sdsdsds");
+			break;
+	}
+	}
+		
+
+
 	}
 	
+	public void ClientCreate(Client client) {
+		    conn = ServerMain.getConnection();
+		    String id = client.getId();
+		    String name = client.getName();
+		    String email = client.getEmail();
+		    Date date = client.getBirthdate();
+		    double currency = client.getCurrency();
+		    try {
+		        String registerSQL = "INSERT INTO client (id, email, name, birthdate, salary) VALUES (?, ?, ?, ?, ?)";
+		        PreparedStatement ps = conn.prepareStatement(registerSQL);
+		        ps.setString(1, id);
+		        ps.setString(2, email);
+		        ps.setString(3, name);
+		        ps.setDate(4, new java.sql.Date(date.getTime()));
+		        ps.setDouble(5, currency);
+		        ps.executeUpdate();
+		        System.out.println("Login created.. probably");
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    ServerMain.closeConnection();
+		}
+
 
 }
+

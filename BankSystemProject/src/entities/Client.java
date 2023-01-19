@@ -7,7 +7,7 @@ public class Client {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private String id;
 	private String name;
-	private String Email;
+	private String email;
 	private Date birthdate;
 	private double currency = 0;
 	
@@ -17,7 +17,7 @@ public class Client {
 	public Client(String id, String name, String email, Date birthdate) {
 		this.id = id;
 		this.name = name;
-		Email = email;
+		this.email = email;
 		this.birthdate = birthdate;
 
 	}
@@ -34,10 +34,10 @@ public class Client {
 		this.name = name;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		email = email;
 	}
 	public Date getBirthdate() {
 		return birthdate;
@@ -54,7 +54,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", name=" + name + ", Email=" + Email + ", birthdate=" + sdf.format(birthdate) + ", currency="
+		return "Client [id=" + id + ", name=" + name + ", Email=" + email + ", birthdate=" + sdf.format(birthdate) + ", currency="
 				+ currency + "]";
 	}
 	
