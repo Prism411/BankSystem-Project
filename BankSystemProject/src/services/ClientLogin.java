@@ -26,8 +26,26 @@ public class ClientLogin {
 	ResultSet rs = pstmt.executeQuery();
 
 	if (rs.next()) {
-	    System.out.println("Existe!");
-	} else {
+        System.out.println("Existe!");
+
+        String clientSQL = "SELECT * FROM client WHERE id = ?";
+        PreparedStatement pstmt2 = conn.prepareStatement(clientSQL);
+        pstmt2.setString(1, ID);
+        ResultSet rs2 = pstmt2.executeQuery();
+        if (rs2.next()) {
+            String id = rs2.getString("id");
+            String email= rs2.getString("email");
+            String name = rs2.getString("name");
+            Date birthdate = rs2.getDate("birthdate");
+            double salary = rs2.getDouble("salary");
+
+            Client client = new Client(id, name, email, birthdate, salary);
+            clientActions.ClientMenu(client);
+	}
+	}
+		
+	    
+	 else {
 		
 		switch (Mode) {
 		
@@ -44,7 +62,8 @@ public class ClientLogin {
 			System.out.println("Não existe!sdsdsds");
 			break;
 	}
-	}
+	
+	 }
 		
 
 

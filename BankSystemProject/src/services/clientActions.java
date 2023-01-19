@@ -11,8 +11,10 @@ public class clientActions {
 	}
 	
 	
-	public void ClientMenu() {
-		System.out.println("Tá funcionando?");
+	public static void ClientMenu(Client client) {
+		System.out.println("----------Sistema de Banco BPSJ--------------");
+		System.out.printf("Current User: %s || Name : %s || Currency : %f", client.getId(), client.getName(), client.getCurrency());
+		
 	}
 	public double addMoney(double money) {
 		

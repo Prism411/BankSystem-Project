@@ -14,6 +14,15 @@ public class Client {
 	public Client() {
 	}
 	
+	public Client(String id, String name, String email, Date birthdate, double currency) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.birthdate = birthdate;
+		this.currency = currency;
+
+	}
+	
 	public Client(String id, String name, String email, Date birthdate) {
 		this.id = id;
 		this.name = name;
