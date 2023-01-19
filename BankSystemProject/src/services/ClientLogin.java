@@ -90,7 +90,6 @@ public class ClientLogin {
 		    } catch (SQLException e) {
 		        e.printStackTrace();
 		    }
-		    ServerMain.closeConnection();
 		}
 
 
