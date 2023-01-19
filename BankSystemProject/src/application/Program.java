@@ -78,7 +78,7 @@ public class Program {
 			break;
 	}
 	
-
+	ServerMain.closeConnection();
 	}
 } 
 

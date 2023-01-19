@@ -33,9 +33,8 @@ public class clientActions {
 		this.client = client;
 		Scanner sc = new Scanner(System.in);
 		int opcao = 0;
-		try {
-		while (opcao != 3) {
-			
+			try {while (opcao != 3) {
+			clearConsole();
 			double money = refreshMoney();
 			System.out.println("----------Sistema de Banco BPSJ--------------");
 			System.out.printf("Current User: %s || Name : %s || Currency : %.2f%n", client.getId(), client.getName(), money);
@@ -46,12 +45,15 @@ public class clientActions {
 			
 			switch (opcao) {
 			
-			case 1: addMoney(320);
-				
-	
-			break;}
+			case 1: System.out.println("Insert Quantity");
+			double aQ = sc.nextDouble();
+			addMoney(aQ); break;
 			
+			case 2:System.out.println("Insert Quantity");
+			double rQ = sc.nextDouble();
+			removeMoney(rQ); break;
 			
+			}
 			
 		} } catch (SQLException e) {
 				e.printStackTrace();}
@@ -82,10 +84,22 @@ public class clientActions {
 		
 	}
 	
-	public double removeMoney(double money) {
+	public void removeMoney(double money) {
+		try {
+		double salary = refreshMoney();
+
+			    salary -= money;
+		    String updateSQL = "UPDATE client SET salary = ? WHERE id = ?";
+		    PreparedStatement ps = conn.prepareStatement(updateSQL);
+		    ps.setDouble(1, salary);
+		    ps.setString(2, client.getId());
+		ps.executeUpdate();
 		
-		double moneyStored = client.getCurrency();
-		return moneyStored -= money;
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
