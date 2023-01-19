@@ -9,6 +9,11 @@ public class clientActions {
 	public clientActions(Client client) {
 		this.client = client;
 	}
+	
+	
+	public void ClientMenu() {
+		System.out.println("Tá funcionando?");
+	}
 	public double addMoney(double money) {
 		
 		double moneyStored = client.getCurrency();

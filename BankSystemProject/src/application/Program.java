@@ -22,9 +22,10 @@ public class Program {
 
 	public static void main(String[] args) throws SQLException, ParseException {
 	Scanner sc = new Scanner(System.in);
+	Client client = null;
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	boolean sucess = false;
-	System.out.println("Bem vindo ao Sistema de Banco BPSJ!");
+	System.out.println("Bem vindo ao Sistema de Banco  !");
 	System.out.println("Voce deseja criar uma conta, ou se logar com uma nova?");
 	System.out.println("  1 - (Criar conta)         2 - (Entrar Com conta)");
 	int opcao = 0;
@@ -61,7 +62,7 @@ public class Program {
 	
 		ClientLogin cl_1 = new ClientLogin(id,senha,opcao); // opcao is the mode selected to clientLogin
 		
-		Client client = new Client(id,name,email,date);
+		client = new Client(id,name,email,date);
 		cl_1.ClientCreate(client);
 		System.out.println(client);
 		break;
@@ -74,7 +75,8 @@ public class Program {
 			break;
 	}
 	
-	
+	clientActions cA = new clientActions(client);
+	cA.ClientMenu();
 	}
 } 
 
