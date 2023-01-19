@@ -40,7 +40,8 @@ public class ClientLogin {
             double salary = rs2.getDouble("salary");
 
             Client client = new Client(id, name, email, birthdate, salary);
-            clientActions.ClientMenu(client);
+            clientActions cA = new clientActions(client);
+            cA.ClientMenu(client);
 	}
 	}
 		
